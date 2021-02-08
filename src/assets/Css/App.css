@@ -141,9 +141,12 @@ section {
    margin-bottom: 5px;
    overflow: hidden;
 }
-.prod-description p:last-child {
+.price {
    font-size: 20px;
-   color: rgb(187, 187, 187);
+   color: rgb(124, 124, 124);
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
 }
 
 .product img {
@@ -153,6 +156,11 @@ section {
    height: 140px;
    border: none;
    object-fit: cover;
+}
+.populaire {
+   font-size: 10px;
+   font-weight: bold;
+   color: #fa8002;
 }
 
 /**************************/

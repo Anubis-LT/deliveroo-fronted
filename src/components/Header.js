@@ -3,7 +3,7 @@ const Header = ({ title, descriptions, picture }) => {
    return (
       <>
          <header className="container">
-            <img src={Logo}></img>
+            <img src={Logo} alt="logo"></img>
          </header>
          <div className="separation"></div>
          <div className="container blocheader">
@@ -12,7 +12,7 @@ const Header = ({ title, descriptions, picture }) => {
                <p>{descriptions}</p>
             </div>
             <div>
-               <img src={picture} />
+               <img src={picture} alt="plat" />
             </div>
          </div>
       </>
