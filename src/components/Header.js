@@ -1,10 +1,20 @@
-const Header = () => {
+import Logo from "../assets/Image/Deliveroo_logo.svg.png";
+const Header = ({ title, descriptions, picture }) => {
    return (
       <>
          <header className="container">
-            <h1 className="h1">Titre</h1>
+            <img src={Logo}></img>
          </header>
-         <div style={{ "border-bottom": "grey 1px solid" }}></div>
+         <div className="separation"></div>
+         <div className="container blocheader">
+            <div>
+               <h1 className="h1">{title}</h1>
+               <p>{descriptions}</p>
+            </div>
+            <div>
+               <img src={picture} />
+            </div>
+         </div>
       </>
    );
 };
