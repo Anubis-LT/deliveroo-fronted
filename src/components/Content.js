@@ -4,22 +4,30 @@ import { useState } from "react";
 
 const Content = ({ data }) => {
    // index, reference, prix,qte,devise
-   const [cart, setCart] = useState([[1, "Brunch Vegan", 24.5, 10, "€"]]);
+   const [cart, setCart] = useState([]);
 
-   const handleAddCart = (index, title, price) => {
+   const handleAddCart = (id, title, price) => {
       // Créer une copie
       const newCart = [...cart];
-      console.log(newCart);
-      newCart.indexOf(index) < 0 && newCart.push([index, title, price, 1]);
+
+      // test if exist in cart
+      let idProdExist = false;
+      for (let i = 0; i < newCart.length; i++) {
+         if (newCart[i][0] === id) {
+            idProdExist = true;
+            break;
+         }
+      }
+
+      idProdExist === false
+         ? newCart.push([id, title, price, 1]) //Add cart
+         : newCart[id][3]++; //update cart
 
       setCart(newCart);
    };
    /*const handleDeleteCart = (index) => {
       // Créer une copie
       const newCart = [...cart];
-
-      
-
       setCart(newCart);
    };*/
 
