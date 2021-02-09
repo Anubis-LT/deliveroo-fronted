@@ -18,6 +18,7 @@ const Content = ({ data }) => {
                               {item.meals.map((itemMeals, indexMeals) => (
                                  <>
                                     <Line
+                                       key={indexMeals}
                                        item={itemMeals}
                                        devise={data.restaurant.price}
                                     />
