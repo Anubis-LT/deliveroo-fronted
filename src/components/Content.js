@@ -1,5 +1,22 @@
 import Line from "./Line";
+import Cart from "./Cart";
+import { useState } from "react";
+
 const Content = ({ data }) => {
+   // index, reference, prix,qte,devise
+   const { cart, setCart } = useState([1, 1, "Brunch Vegan", 24.5, "€"]);
+
+   /*const addCart = (event, index) => {
+      "";
+   };
+   const UpdateCart = (event, index) => {
+      "";
+   };
+
+   const DeleteCart = (event, index) => {
+      "";
+   };*/
+
    return (
       <>
          <section>
@@ -17,11 +34,13 @@ const Content = ({ data }) => {
                            <div className="products">
                               {item.meals.map((itemMeals, indexMeals) => (
                                  <>
-                                    <Line
-                                       key={indexMeals}
-                                       item={itemMeals}
-                                       devise={data.restaurant.price}
-                                    />
+                                    <a>
+                                       <Line
+                                          key={indexMeals}
+                                          item={itemMeals}
+                                          devise={data.restaurant.price}
+                                       />
+                                    </a>
                                  </>
                               ))}
                            </div>
@@ -30,10 +49,7 @@ const Content = ({ data }) => {
                   </div>
                </div>
                <div className="col-panier">
-                  <div className="panier">
-                     <button type="button">Valider mon panier</button>
-                     <p>Votre panier est vide</p>
-                  </div>
+                  <Cart cart={cart} />
                </div>
             </div>
          </section>
