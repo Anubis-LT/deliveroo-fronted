@@ -1,4 +1,4 @@
-const Cart = ({ cart }) => {
+const Cart = ({ cart, setCart }) => {
    return (
       <>
          <div className="panier">
@@ -8,7 +8,34 @@ const Cart = ({ cart }) => {
                <p>Votre panier est vide</p>
             ) : (
                cart.map((itemCart, indexCart) => (
-                  <p key={indexCart}>{itemCart}</p>
+                  <div className="listCart">
+                     <button
+                        onClick={() => {
+                           const newCart = [...cart];
+                           newCart[indexCart][3]--;
+                           setCart(newCart);
+                        }}
+                     >
+                        -
+                     </button>
+                     <span key={indexCart}>
+                        {itemCart[3] > -1 && itemCart[3]}
+                     </span>
+                     <button
+                        onClick={() => {
+                           const newCart = [...cart];
+                           newCart[indexCart][3]++;
+                           setCart(newCart);
+                        }}
+                     >
+                        +
+                     </button>
+                     <span key={indexCart}>{itemCart[1]}</span>
+                     <span key={indexCart}>
+                        {itemCart[3] > 0 && itemCart[2] * itemCart[3]}
+                     </span>
+                     <span key={indexCart}>{itemCart[4]}</span>
+                  </div>
                ))
             )}
          </div>

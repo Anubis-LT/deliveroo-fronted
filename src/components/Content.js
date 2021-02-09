@@ -4,17 +4,23 @@ import { useState } from "react";
 
 const Content = ({ data }) => {
    // index, reference, prix,qte,devise
-   const { cart, setCart } = useState([1, 1, "Brunch Vegan", 24.5, "€"]);
+   const [cart, setCart] = useState([[1, "Brunch Vegan", 24.5, 10, "€"]]);
 
-   /*const addCart = (event, index) => {
-      "";
-   };
-   const UpdateCart = (event, index) => {
-      "";
-   };
+   const handleAddCart = (index, title, price) => {
+      // Créer une copie
+      const newCart = [...cart];
+      console.log(newCart);
+      newCart.indexOf(index) < 0 && newCart.push([index, title, price, 1]);
 
-   const DeleteCart = (event, index) => {
-      "";
+      setCart(newCart);
+   };
+   /*const handleDeleteCart = (index) => {
+      // Créer une copie
+      const newCart = [...cart];
+
+      
+
+      setCart(newCart);
    };*/
 
    return (
@@ -34,13 +40,21 @@ const Content = ({ data }) => {
                            <div className="products">
                               {item.meals.map((itemMeals, indexMeals) => (
                                  <>
-                                    <a>
+                                    <p
+                                       onClick={() =>
+                                          handleAddCart(
+                                             itemMeals.id,
+                                             itemMeals.title,
+                                             itemMeals.price
+                                          )
+                                       }
+                                    >
                                        <Line
-                                          key={indexMeals}
+                                          key={itemMeals.id}
                                           item={itemMeals}
                                           devise={data.restaurant.price}
                                        />
-                                    </a>
+                                    </p>
                                  </>
                               ))}
                            </div>
@@ -49,7 +63,7 @@ const Content = ({ data }) => {
                   </div>
                </div>
                <div className="col-panier">
-                  <Cart cart={cart} />
+                  <Cart cart={cart} setCart={setCart} />
                </div>
             </div>
          </section>

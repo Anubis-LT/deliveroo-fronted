@@ -36,6 +36,7 @@ const Line = ({ item, devise, index }) => {
                   )}
                </div>
             </div>
+
             {item.picture != null ? (
                <div>
                   <img src={item.picture} alt="plat" />
